@@ -29,7 +29,8 @@ public class Test {
                     double previousStateProb = T[i].currentBestProb;
                     int[] previousPath = T[i].currentBestPath;
 
-                    double newProb = previousStateProb * transitionProbability[previousPath[previousPath.length - 1]][k] * emissionProbability[k][j];
+                    double newProb = previousStateProb * transitionProbability[previousPath[previousPath.length - 1]][k]
+                                     * emissionProbability[k][j];
                     int [] newPath = copyAndAddElement(previousPath, k);
 
                     if (soFarMaxProb < newProb) {
