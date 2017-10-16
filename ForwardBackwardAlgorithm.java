@@ -13,7 +13,7 @@ public class ForwardBackwardAlgorithm {
         double [] forwardPrevious = new double[states.length];
 
         for(int i = 0 ; i < observations.length ; i++) {
-            double [] f_curr = new double[states.length];
+            double [] forwardCurrent = new double[states.length];
             for (int k = 0 ; k < states.length ; k++) {
                 double prevForwardSum = 0;
                 if (i == 0) {
@@ -23,11 +23,11 @@ public class ForwardBackwardAlgorithm {
                         prevForwardSum += forwardPrevious[y] * transitionProbability[y][k];
                     }
                 }
-                f_curr[k] = emissionProbability[k][i] * prevForwardSum;
+                forwardCurrent[k] = emissionProbability[k][i] * prevForwardSum;
 
             }
-            forwardList.add(f_curr);
-            forwardPrevious = f_curr;
+            forwardList.add(forwardCurrent);
+            forwardPrevious = forwardCurrent;
         }
 
         double forwardProbability = 0;
